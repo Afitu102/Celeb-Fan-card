@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Fan Membership Card Builder</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+<div class="container">
+
+    <header>
+        <h1>FAN MEMBERSHIP CARD BUILDER</h1>
+        <p>Create and verify your fan membership cards.</p>
+    </header>
+
+    <!-- CELEBRITY SELECTION -->
+
+    <section class="form-section">
+
+        <h2>Select Celebrity</h2>
+
+        <input
+            type="search"
+            id="celebritySearch"
+            placeholder="Search celebrity..."
+        >
+
+        <div class="category-buttons">
+            <button type="button" data-category="All">All</button>
+            <button type="button" data-category="American">American</button>
+            <button type="button" data-category="British">British</button>
+            <button type="button" data-category="International">International</button>
+        </div>
+
+        <div class="celebrity-grid" id="celebrityGrid"></div>
+
+    </section>
+
+
+    <!-- COLOUR SELECTION -->
+
+    <section class="form-section">
+
+        <h2>Choose Card Colour</h2>
+
+        <div class="theme-grid">
+
+            <button type="button" data-main="#172e59" data-accent="#d4af37">
+                Navy Gold
+            </button>
+
+            <button type="button" data-main="#111111" data-accent="#d4af37">
+                Black Gold
+            </button>
+
+            <button type="button" data-main="#541b70" data-accent="#e6b8ff">
+                Purple
+            </button>
+
+            <button type="button" data-main="#075c3c" data-accent="#d4af37">
+                Emerald
+            </button>
+
+            <button type="button" data-main="#791e2b" data-accent="#f1c40f">
+                Burgundy
+            </button>
+
+            <button type="button" data-main="#164e82" data-accent="#c0e6ff">
+                Blue
+            </button>
+
+        </div>
+
+        <label for="customColor">Custom Card Colour</label>
+        <input type="color" id="customColor" value="#172e59">
+
+    </section>
+
+
+    <!-- FAN INFORMATION -->
+
+    <section class="form-section">
+
+        <h2>Fan Information</h2>
+
+        <label for="fanName">Fan Name</label>
+        <input type="text" id="fanName" placeholder="Enter fan name">
+
+        <label for="sex">Sex</label>
+        <select id="sex">
+            <option value="Female">Female</option>
+            <option value="Male">Male</option>
+            <option value="Other">Other</option>
+        </select>
+
+        <label for="cardType">Card Type</label>
+        <select id="cardType">
+            <option value="Regular">Regular</option>
+            <option value="VIP">VIP</option>
+        </select>
+
+        <label for="country">Country</label>
+        <input type="text" id="country" placeholder="Enter country">
+
+        <label for="favorite">Favorite</label>
+        <input type="text" id="favorite" placeholder="Favorite celebrity">
+
+        <label for="fanPhoto">Upload Fan Photograph</label>
+        <input type="file" id="fanPhoto" accept="image/*">
+
+    </section>
+
+
+    <!-- BACK CARD INFORMATION -->
+
+    <section class="form-section">
+
+        <h2>Back Card Information</h2>
+
+        <label for="benefits">Membership Benefits</label>
+        <textarea id="benefits">Early access to exclusive content
+VIP members receive priority access
+Special fan community privileges
+Exclusive membership updates</textarea>
+
+        <label for="terms">Terms and Conditions</label>
+        <textarea id="terms">This is an unofficial fan-made collectible. It does not grant access to any celebrity's private events or official membership programs.</textarea>
+
+        <label for="validity">Validity</label>
+        <input type="text" id="validity" value="Member Since 2026 - Active">
+
+        <label for="contact">Contact Information</label>
+        <input type="text" id="contact" value="Contact the fan community for information">
+
+        <label for="disclaimer">Editable Disclaimer</label>
+        <textarea id="disclaimer">UNOFFICIAL FAN-MADE COLLECTIBLE</textarea>
+
+    </section>
+
+
+    <!-- GENERATE CARD -->
+
+    <section class="form-section">
+
+        <button type="button" id="generateCard">
+            GENERATE FAN CARD
+        </button>
+
+        <p id="statusMessage"></p>
+
+    </section>
+
+
+    <!-- FRONT CARD PREVIEW -->
+
+    <section class="preview-section">
+
+        <h2>FRONT CARD PREVIEW</h2>
+
+        <div class="card front-card" id="frontCard">
+
+            <div class="card-header">
+
+                <h2 id="previewCelebrity">
+                    Celebrity Membership Card
+                </h2>
+
+                <p>PREMIUM FAN COLLECTIBLE</p>
+
+            </div>
+
+            <div class="front-main">
+
+                <div class="fan-photo">
+                    <img id="previewFanPhoto" src="" alt="Fan photograph">
+                </div>
+
+                <div class="fan-details">
+
+                    <p><b>FAN NAME:</b> <span id="previewName"></span></p>
+
+                    <p><b>FAN ID:</b> <span id="previewID"></span></p>
+
+                    <p><b>SEX:</b> <span id="previewSex"></span></p>
+
+                    <p><b>CARD TYPE:</b> <span id="previewType"></span></p>
+
+                    <p><b>COUNTRY:</b> <span id="previewCountry"></span></p>
+
+                    <p><b>MEMBER SINCE:</b> <span id="previewYear"></span></p>
+
+                    <p><b>FAVORITE:</b> <span id="previewFavorite"></span></p>
+
+                </div>
+
+                <div class="celebrity-photo">
+                    <img id="previewCelebrityPhoto" src="" alt="Celebrity photograph">
+                    <small id="previewCelebrityName"></small>
+                </div>
+
+            </div>
+
+
+            <!-- FRONT CARD BOTTOM -->
+
+            <div class="card-bottom">
+
+                <div class="signature-box">
+
+                    <small>Signature</small>
+
+                    <div id="previewSignature">
+                        S. James
+                    </div>
+
+                </div>
+
+                <div class="barcode-box">
+
+                    <svg id="barcode"></svg>
+
+                    <small id="barcodeID"></small>
+
+                </div>
+
+                <div class="qr-box">
+
+                    <div id="frontQR"></div>
+
+                    <small>SCAN TO VERIFY</small>
+
+                </div>
+
+            </div>
+
+            <div class="front-disclaimer" id="previewFrontDisclaimer">
+                UNOFFICIAL FAN-MADE COLLECTIBLE
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- BACK CARD PREVIEW -->
+
+    <section class="preview-section">
+
+        <h2>BACK CARD PREVIEW</h2>
+
+        <div class="card back-card" id="backCard">
+
+            <div class="mag-strip"></div>
+
+            <div class="back-content">
+
+                <h3>MEMBER BENEFITS</h3>
+
+                <ul id="previewBenefits"></ul>
+
+                <p>
+                    <b>TERMS:</b>
+                    <span id="previewTerms"></span>
+                </p>
+
+                <p>
+                    <b>VALID:</b>
+                    <span id="previewValidity"></span>
+                </p>
+
+                <p>
+                    <b>CONTACT:</b>
+                    <span id="previewContact"></span>
+                </p>
+
+                <div class="back-qr">
+
+                    <div id="backQR"></div>
+
+                    <div>
+                        <b>Fan Card Information</b>
+                        <p>Scan to view card verification details.</p>
+                        <small id="backCardID"></small>
+                    </div>
+
+                </div>
+
+                <div class="back-disclaimer" id="previewBackDisclaimer">
+                    UNOFFICIAL FAN-MADE COLLECTIBLE
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- DOWNLOAD BUTTONS -->
+
+    <section class="download-section">
+
+        <button type="button" id="downloadFront">
+            DOWNLOAD FRONT CARD
+        </button>
+
+        <button type="button" id="downloadBack">
+            DOWNLOAD BACK CARD
+        </button>
+
+    </section>
+
+
+    <!-- VERIFICATION INFORMATION -->
+
+    <section class="verification-section">
+
+        <h2>FAN CARD VERIFICATION</h2>
+
+        <p>
+            Every saved fan card receives a unique QR code.
+            Scan the QR code to view its verification information.
+        </p>
+
+        <div id="verificationStatus"></div>
+
+    </section>
+
+
+    <footer>
+
+        <p>
+            This is an unofficial fan-made collectible.
+            It is not issued, approved or endorsed by any celebrity.
+        </p>
+
+    </footer>
+
+</div>
+
+
+<!-- JAVASCRIPT -->
+
+<script type="module" src="app.js"></script>
+
+</body>
+</html>
